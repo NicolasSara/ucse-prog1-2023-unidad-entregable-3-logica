@@ -9,11 +9,15 @@ namespace LogicaAgenciaViajes
 {
     public class Principal
     {
-        private List<MedioDeTransporte> MediosDeTransporte;
+        private List<MedioDeTransporte> ListaMediosDeTransporte;
 
         public Principal()
         {
-            MediosDeTransporte = new List<MedioDeTransporte>();
+            ListaMediosDeTransporte = new List<MedioDeTransporte>();
+        }
+
+        public List<MedioDeTransporte> DevolverListaMediosDeTransporte() {
+            return ListaMediosDeTransporte;
         }
 
         public ResultadoValidacion CrearMedioDeTransporte(MedioDeTransporte medio)
@@ -39,8 +43,8 @@ namespace LogicaAgenciaViajes
 
             if (result.Success)
             {
-                medio.Id = MediosDeTransporte.Count + 1;
-                MediosDeTransporte.Add(medio);
+                medio.Id = ListaMediosDeTransporte.Count + 1;
+                ListaMediosDeTransporte.Add(medio);
             }
 
             return result;
@@ -48,7 +52,7 @@ namespace LogicaAgenciaViajes
 
         public MedioDeTransporte ObtenerMedioDeTransporte(int id)
         {
-            return MediosDeTransporte.FirstOrDefault(x => x.Id == id && !x.FechaEliminacion.HasValue);
+            return ListaMediosDeTransporte.FirstOrDefault(x => x.Id == id && !x.FechaEliminacion.HasValue);
         }
 
         public ResultadoValidacion ActualizarMedioDeTransporte(int id, MedioDeTransporte medio)
@@ -110,7 +114,7 @@ namespace LogicaAgenciaViajes
         public List<MedioDeTransporte> FiltrarMediosDeTransportePorAño(int añoMinimo)
         {
             List<MedioDeTransporte> mediosFiltrados = new List<MedioDeTransporte>();
-            foreach (var medio in MediosDeTransporte)
+            foreach (var medio in ListaMediosDeTransporte)
             {
                 if (medio.Año >= añoMinimo)
                 {
