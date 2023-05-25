@@ -42,7 +42,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Enums.cs" />
-    <Compile Include="IColectivo.cs" />
     <Compile Include="ResultadoValidacionItem.cs" />
     <Compile Include="ResultadoValidacion.cs" />
     <Compile Include="Traffic.cs" />
